@@ -1,32 +1,6 @@
-# ASTRO Camp JavaScript Workshop - 5xJob
+![](https://i.imgur.com/zE2NR8w.gif)
 
  [GitHub Job API](https://jobs.github.com/api) 作為操作資料，以 [GitHub Job](https://jobs.github.com/) 為參考來實作純前端頁面
-
-請學員依序完成以下任務清單來達成目標
-
-
-## 專案準備以及提交方式
-
-1. 請 fork 本 repo 至自己的 GitHub 帳號下
-2. git clone 到自己的電腦上
-  - `git clone _your-git-repo.git_`
-3. 請將 master branch 保護起來，不允許直接推 master branch
-  - GitHub repo > Settings > Branches > Branch protection rules > add rule
-  - `Branch name pattern` 上加上 `master`
-3. 每個任務請開 branch 開發，branch name 命名規則: `feature/task_1`
-4. 完成後請發 PR 到自已的 GitHub repo 上
-  - `git push origin feature/task_1`
-  - 將任務需求貼在 PR description 上面
-  - 自己 merge PR
-5. 記得回到 local 端 `git pull remote master` 更新本地端 master branch
-
-如果要開啟本地端靜態伺服器
-
-```
-$ npx http-server .
-```
-
-可以啟用 `http://localhost:8080`
 
 
 ## 任務清單
