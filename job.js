@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
   // console.log("hi")
+
   let form = document.forms[0]
   form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -42,82 +43,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
       searchUrl = result.url + `description=` + inputJob + `&location=` +  inputLocation;
       console.log(searchUrl) 
       // https://jobs.github.com/positions.json?description=Developer&location=North+York&full_time=on
+      // getJob("ruby", 1);
 
-      // axios.get(searchUrl)
-      // .then((response) => { 
-      //   console.log(response) 
-      //   console.log(response.location)
-      // })
-      // .catch((error) => { console.error(error) })
-
-      // https://still-spire-37210.herokuapp.com/positions.json?description=developer&location=Hamburg&full_time=on
-      // let textWrap = document.querySelector("#records-panel")
-
-      fetch(searchUrl)
-      .then(response => response.json())
-      .then(jobs => {
-        console.log(jobs)
-        jobs.forEach(job => {
-          // var newDiv = document.createElement("div");
-          // console.log(job.title)
-          // console.log(job.company)
-          const table = document.querySelector(".table")
-          const template = document.querySelector("#job-template")
-          const jobDescription = template.content.querySelector('h4')
-          const jobCompany = template.content.querySelector('.company')
-          const jobFullTime = template.content.querySelector('.fulltime')
-          const jobLocation = template.content.querySelector('.location')
-          console.log(jobLocation)
-          console.log(job.location)
-          jobDescription.innerHTML = job.title
-          jobCompany.innerHTML = job.company
-          jobFullTime.innerHTML = job.type
-          jobLocation.innerHTML = job.location
-
-          console.log(jobCompany)
-          const clone = document.importNode(template.content, true)
-          console.log(clone)
-          // document.querySelector('#job-panel').appendChild(clone)
-          table.appendChild(clone)
-        })
-  
-        // document.querySelector('.post-created-at').textContent = post.created_at;
-        // document.querySelector('.post-author').textContent = post.author;
-        // document.querySelector('.post-description').textContent = post.description;
-        
-
-      })
-
-      //  ---fetch API---
-      // fetch(searchUrl)
-      // .then(response => response.json())
-      // .then(posts => {
-      //   console.log(response.json())
-        // const post = posts[0];
-  
-        // document.querySelector('.post-created-at').textContent = post.created_at;
-        // document.querySelector('.post-author').textContent = post.author;
-        // document.querySelector('.post-description').textContent = post.description;
-        
-        // const postTitle = document.querySelector('.post-title');
-        // const postLink = document.querySelector('.post-link');
-  
-        // postTitle.href = post.url;
-        // postLink.href = post.url;
-        // postLink.classList.remove('hidden');
-      // })
-
-      //  ---pastleo---
-      // fetch('https://pastleo-posts-api.herokuapp.com/api/posts')
-      // .then(response => response.json())
-      // .then(posts => {
-      //   console.log(posts)
-  
-      //   // document.querySelector('.post-created-at').textContent = post.created_at;
-      //   // document.querySelector('.post-author').textContent = post.author;
-      //   // document.querySelector('.post-description').textContent = post.description;
-        
-      // })
+      fetchJob(searchUrl);
+      document.getElementsByTagName("BODY")[0].dataset.url = searchUrl
+      console.log("URL: "+ document.getElementsByTagName("BODY")[0].dataset.url)
     }
    
     // {inputJob: "ruby", inputLocation: "us"}
@@ -128,4 +58,44 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     // 
   })
+
+  document.querySelector('.pagination-next').addEventListener('click',function(e){
+    // 按的時候當前頁數+1
+    let nextPage = Number(document.getElementsByTagName("BODY")[0].dataset.page)+1
+    document.getElementsByTagName("BODY")[0].dataset.page = nextPage
+    let nextUrl = document.getElementsByTagName("BODY")[0].dataset.url + "&page=" + nextPage
+    fetchJob(nextUrl);
+  })
 })
+
+
+
+function fetchJob(searchUrl) {
+  console.log(searchUrl)
+  fetch(searchUrl)
+  .then(response => response.json())
+  .then(jobs => {
+    console.log(jobs.length)
+
+    if(jobs.length > 10){
+      document.querySelector('.pagination-next').removeAttribute('disabled');
+    }
+    jobs.forEach(job => {
+      
+      const table = document.querySelector(".table")
+      const template = document.querySelector("#job-template")
+      const jobDescription = template.content.querySelector('h4')
+      const jobCompany = template.content.querySelector('.company')
+      const jobFullTime = template.content.querySelector('.fulltime')
+      const jobLocation = template.content.querySelector('.location')
+
+      jobDescription.innerHTML = job.title
+      jobCompany.innerHTML = job.company
+      jobFullTime.innerHTML = job.type
+      jobLocation.innerHTML = job.location
+      
+      const clone = document.importNode(template.content, true)
+      table.appendChild(clone)
+    })
+  })
+}
