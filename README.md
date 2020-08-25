@@ -1,6 +1,6 @@
 # Ting's Job Search API
 
-![](https://i.imgur.com/Q2ic7wX.gif)  
+![](https://i.imgur.com/bpsODTE.gif). 
 ![](https://i.imgur.com/zE2NR8w.gif)  
  
 
