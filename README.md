@@ -1,5 +1,7 @@
 # Ting's Job Search API
 
+本專案已發佈至GitHub Page: https://tingtinghsu.github.io/job-board/index.html  
+
 ![](https://i.imgur.com/bpsODTE.gif). 
 ![](https://i.imgur.com/zE2NR8w.gif)  
  
@@ -9,17 +11,13 @@
 
 ## 任務清單
 
-### Task 1
-
-目標：完成手機版 navbar 選單顯示
+### Task 1 完成手機版 navbar 選單顯示
 - [ ] 本專案是使用 [Bulma](https://bulma.io/documentation/) 作為 css 框架，可以快速的瀏覽一下它的使用方式
 - [ ] 完成 index.js - 在手機版頁面點擊漢堡圖示顯示選單
   - Bulma 的 navbar 會自動變成漢堡選單，但選單的觸發必須套上 `.is-active` 的 class 顯示 （請參考 https://bulma.io/documentation/components/navbar/#navbar-menu）
   - 請新增一個 index.js 檔案，並且在漢堡選單上套用點擊事件，讓畫面可以在手機版的版型正確顯示 menu 清單
 
-### Task 2
-
-目標：取得 GitHub Job API 資料
+### Task 2 取得 GitHub Job API 資料
 - [ ] 請先閱讀 GitHub Job API 文件 https://jobs.github.com/api
   - 請試著在 postman 上操作 API，並且試著加上 params 看看取回來的結果
 - [ ] 使用專案內的表單來組出正確的 request uri
@@ -31,15 +29,11 @@
   - 取得的結果直接 console.log 印出即可
   - note: github api 說明有誤，應該是要給 `full_time=on`
 
-### Task 3
-
-目標：將取得的 JSON 資料 render 成 HTML 輸出在畫面上
+### Task 3 將取得的 JSON 資料 render 成 HTML 輸出在畫面上
 - [ ] 將範例檔案上的 html 程式碼 作為 HTML template 來渲染 JSON 資料
   - 請注意在渲染前要將舊的畫面資料清空
 
-### Task 4
-
-目標：新增分頁處理
+### Task 4 新增分頁處理
 - [ ] 當取回來的筆數為 50 筆，可以點選 `Next Page` 來 load 出更多的結果
   - GitHub API 單次最多可取得 50 筆資料
   - 取得下一頁資料後，請直接串接在原始資料的下方 
@@ -47,9 +41,7 @@
 - [ ] 第一次開啟頁面時預設讀取 `position.json` 的結果，並且一樣可以使用分頁功能
 
 
-### Task 5
-
-目標: 發布成果到 GitHub Page 上
+### Task 5 發布成果到 GitHub Page 上
 - [ ] 發布自己的 proxy server 到 heroku 上
   - 你可以直接 fork 本次 [proxy server 的 repo](https://github.com/spreered/js-workshop-server)
 - [ ] 發布頁面到 GitHub Page 上
