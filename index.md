@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+# Ting's Job Search API
 
-You can use the [editor on GitHub](https://github.com/tingtinghsu/js_workshop_job/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![](https://i.imgur.com/bpsODTE.gif). 
+![](https://i.imgur.com/zE2NR8w.gif)  
+ 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+ [GitHub Job API](https://jobs.github.com/api) 作為操作資料，以 [GitHub Job](https://jobs.github.com/) 為參考來實作純前端頁面
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# 取得 GitHub Job API 資料
+- [ ] GitHub Job API 文件 https://jobs.github.com/api
+  - 在 postman 上操作 API，並且試著加上 params 看看取回來的結果
+- [ ] 使用專案內的表單來組出正確的 request uri
+  - 左側的表單上有三個 input 欄位，分別對應到 api 的 param `description` `location` `full_time`
+  - 在點擊 `Search` 按鈕後，可以在表單上取得 input 內容並且組合成正確的 request uri ( 例如 `https://jobs.github.com/position.json?description=ruby&location=new york&full_time=true` )
+- [ ] 使用 fetch_ api / axios / jQuery ajax 發送 request 
+  - 因為 GitHub Job api 有設定 CORS，助教會在上課中另外提供 no CORS 的 proxy API
+  - xhr 工具可以任選，如果要使用 axios 或 jQuery 請自行在專案內引入
 
-```markdown
-Syntax highlighted code block
+# 取得的 JSON 資料 render 成 HTML 輸出在畫面上
+- [ ] 將範例檔案上的 html 程式碼 作為 HTML template 來渲染 JSON 資料
+  - 請注意在渲染前要將舊的畫面資料清空
 
-# Header 1
-## Header 2
-### Header 3
+# 新增分頁處理
+- [ ] 當取回來的筆數為 50 筆，可以點選 `Next Page` 來 load 出更多的結果
+  - GitHub API 單次最多可取得 50 筆資料
+  - 取得下一頁資料後，請直接串接在原始資料的下方 
+  - 如果回傳筆數少於 50 筆，代表沒有下一頁可以選，請將 `Next Page` 按鈕設定為 disable
+- [ ] 第一次開啟頁面時預設讀取 `position.json` 的結果，並且一樣可以使用分頁功能
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tingtinghsu/js_workshop_job/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
