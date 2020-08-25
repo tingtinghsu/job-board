@@ -51,30 +51,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
       // .catch((error) => { console.error(error) })
 
       // https://still-spire-37210.herokuapp.com/positions.json?description=developer&location=Hamburg&full_time=on
-      let textWrap = document.querySelector("#records-panel")
+      // let textWrap = document.querySelector("#records-panel")
+
       fetch(searchUrl)
       .then(response => response.json())
       .then(jobs => {
         console.log(jobs)
         jobs.forEach(job => {
+          // var newDiv = document.createElement("div");
           // console.log(job.title)
           // console.log(job.company)
-          // const template = document.querySelector("#job-template")
-          const jobDescription = document.querySelector('h4')
-          const jobCompany = document.querySelector('.company')
-          const jobFullTime = document.querySelector('.fulltime')
-          const jobLocation = document.querySelector('.location')
+          const table = document.querySelector(".table")
+          const template = document.querySelector("#job-template")
+          const jobDescription = template.content.querySelector('h4')
+          const jobCompany = template.content.querySelector('.company')
+          const jobFullTime = template.content.querySelector('.fulltime')
+          const jobLocation = template.content.querySelector('.location')
           console.log(jobLocation)
           console.log(job.location)
           jobDescription.innerHTML = job.title
           jobCompany.innerHTML = job.company
           jobFullTime.innerHTML = job.type
           jobLocation.innerHTML = job.location
-          // console.log(template)
-          // const clone = document.importNode(template.content, true)
-          // console.log(clone)
+
+          console.log(jobCompany)
+          const clone = document.importNode(template.content, true)
+          console.log(clone)
           // document.querySelector('#job-panel').appendChild(clone)
-          // textWrap.appendChild(clone)
+          table.appendChild(clone)
         })
   
         // document.querySelector('.post-created-at').textContent = post.created_at;
